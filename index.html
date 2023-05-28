@@ -143,18 +143,18 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-8">
-                    <form>
+                    <form name="kontakform-ku"> 
                         <div class="mb-3">
                           <label for="name" class="form-label">Nama Lengkap</label>
-                          <input type="text" class="form-control" id="name" aria-describedby="name">
+                          <input type="text" class="form-control" id="name" aria-describedby="name" name="nama">
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email </label>
-                            <input type="email" class="form-control" id="email" aria-describedby="email">
+                            <input type="email" class="form-control" id="email" aria-describedby="email" name="email">
                         </div>
                         <div class="mb-3">
                             <label for="pesan" class="form-label">Pesan</label>
-                            <textarea class="form-control" id="pesan" rows="3"></textarea>
+                            <textarea class="form-control" id="pesan" rows="3" name="pesan"></textarea>
                         </div>                    
                         <button type="submit" class="btn btn-primary">Submit</button>
                       </form>
@@ -178,5 +178,19 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    
+    <!-- ini script form kontak me  -->
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycby6kO25dR3bS2ymL0d3uYfFfFot_sIhsuTAcu-DoXdtUq3HYx2Kg0-GL3A-LTwjkoSh/exec'
+      const form = document.forms['kontakform-ku']
+
+      form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => console.log('Success!', response))
+          .catch(error => console.error('Error!', error.message))
+      })
+    </script>
+    
   </body>
 </html>
