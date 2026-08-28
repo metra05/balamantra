@@ -251,7 +251,7 @@
         btnLoading.classList.toggle('d-none');
         btnKirim.classList.toggle('d-none');
         
-        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        fetch(scriptURL, { method: 'POST', mode: "no-cors", body: new FormData(form)})
           .then(response => {
             // tampilkan tombol kirim, sembunyikan tombol loading....
             btnLoading.classList.toggle('d-none');
